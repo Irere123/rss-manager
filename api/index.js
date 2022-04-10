@@ -1,16 +1,18 @@
 const express = require("express");
 const morgan = require("morgan");
 const Parser = require("rss-parser");
+const cors = require("cors");
 
 const parser = new Parser();
 
 let items = [];
 
 const app = express();
-express.json();
+app.use(express.json());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 parser
-  .parseURL("http://rss.cnn.com/rss/edition.rss")
+  .parseURL("https://www.reddit.com/.rss")
   .then((result) => {
     items = result.items;
   })
@@ -30,15 +32,45 @@ app.get("/", (_req, res) => {
     .status(200);
 });
 
-app.get("/:parseUrl", (req, res) => {
-  const { parseUrl } = req.params;
+app.get("/parse", (req, res) => {
+  const { parseUrl } = req.body;
+
   parser
     .parseURL(parseUrl)
     .then((result) => {
-      res.json({ result, success: false }).status(200);
+      res.json({ result, success: true }).status(200);
     })
     .catch((error) => {
-      res.json({ error, success: false }).status(400);
+      console.log(error);
+      res.json({ error, success: false }).status(500);
+    });
+});
+
+app.get("/reddit", (_req, res) => {
+  const parseUrl = "https://www.reddit.com/.rss";
+  parser
+    .parseURL("https://www.reddit.com/r/programming/.rss")
+    .then((result) => {
+      console.log(result);
+      return res.json({ result, success: true }).status(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.json({ error, success: false }).status(500);
+    });
+});
+
+app.get("/cnn", (_req, res) => {
+  const parseUrl = "https://www.cnn.com/rss/cnn_latest.rss";
+  parser
+    .parseURL(parseUrl)
+    .then((result) => {
+      console.log(result);
+      return res.json({ result, success: true }).status(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      return res.json({ error, success: false }).status(500);
     });
 });
 

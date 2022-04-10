@@ -23,21 +23,10 @@ p.bold {
 	font-size: 14px;
 
 	--color-button-text: #fff;
-	--color-primary-100: #dee3ea;
-	--color-primary-200: #b2bdcd;
-	--color-primary-300: #5d7290;
-	--color-primary-600: #323d4d;
-	--color-primary-700: #242c37;
-	--color-primary-800: #151a21;
-	--color-primary-900: #0b0e11;
-	--color-secondary-washed-out: #879eed;
-	--color-secondary: #5575e7;
-	--color-accent-glow: rgba(253, 77, 77, 0.3);
 	--color-accent: #fd4d4d;
 	--color-accent-hover: #fd6868;
 	--color-accent-disabled: #f5bfbf;
 	--screen-height-reduction: 0px;
-	--color-primary-100-translucent: rgba(222, 227, 234, 0.15);
 }
 
 h1 {
@@ -68,11 +57,11 @@ p.small {
 /* for firefox */
 * {
 	scrollbar-width: thin;
-	scrollbar-color: var(--color-primary-700) rgba(0, 0, 0, 0);
 }
 
 /* for non-firefox */
 ::-webkit-scrollbar {
+	background-color: var(--color-accent-disabled);
 	overflow: overlay;
 	width: 8px;
 	/* shouldnt hardcode width, pls find way to make it dynamic, thin wasn't working for me...*/
@@ -83,14 +72,13 @@ p.small {
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: var(--color-primary-700);
+	background-color: var(--color-accent);
 	border-radius: 5px;
 }
 
 html,
 body,
 main {
-	background-color: var(--color-primary-900);
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -107,10 +95,6 @@ html {
 
 main {
 	overflow-y: auto;
-}
-
-::-webkit-resizer {
-	background: var(--color-primary-700);
 }
 
 .h-screen {
