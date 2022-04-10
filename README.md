@@ -1,10 +1,9 @@
-<p align="center">
-  <h1>RSS Manager</h1>
-</p>
+<h1 align="center">RSS MANAGER</h1>
+
 <br/>
 <p align="center">
-    <img src="https://img.shields.io/github/contributors/irere123/rss-feed"/>
-    <img src="https://img.shields.io/github/v/release/irere123/rss-feed"/>
+    <img src="https://img.shields.io/github/contributors/irere123/rss-manager"/>
+    <img src="https://img.shields.io/github/release/irere123/rss-manager"/>
 </p>
 
 # What is this ?
@@ -30,3 +29,5 @@ Please read [CONTRIBUTING.md](https://github.com/irere123/rss-manager/blob/prod/
 
 - dev -> this where or dev stuff happens
 - prod -> don't touch, this is what's running in prod
+
+Irere Emmanuel 2022
